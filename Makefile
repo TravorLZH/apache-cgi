@@ -37,5 +37,5 @@ libcgi.a:	$(libcgi_OBJ)
 	ar rc $@ $^
 readvar:	libcgi.a
 clean:
-	rm -f *.o *.a *.so
+	rm -f *.o *.a *.so lib/*.o
 	rm -f $(TARGETS)
