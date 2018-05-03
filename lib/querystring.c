@@ -21,6 +21,5 @@ char *get_variable(char *name)
 		}
 		ptr+=strlen(ptr)+1;
 	}
-	printf("ptr: %s\n",ptr);
 	return ptr+len+1;
 }
