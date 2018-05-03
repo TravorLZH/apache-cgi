@@ -17,7 +17,7 @@ char *get_variable(char *name)
 	strtok(tmp,"&");
 	while(memcmp(ptr,name,len)){
 		if((size_t)(ptr-query)>=qlen){
-			break;
+			return NULL;
 		}
 		ptr+=strlen(ptr)+1;
 	}
