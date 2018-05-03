@@ -3,35 +3,24 @@
 #include <stdio.h>
 #include <string.h>
 
-char vars[32][BUFSIZ];
+char tmp[BUFSIZ];
 
-char **get_variables(void)
-{
-	memset(vars,0,sizeof(vars));	// Clear the buffer
-	char *query=getenv("QUERY_STRING");
-	char *ptr=query;
-	int len=strlen(query);
-	int i;
-	if(len<=1){
-		return NULL;
-	}
-	strtok(query,"&");
-	for(i=0;i<32;i++){
-		strcpy(vars[i],query);
-		query+=strlen(query)+1;
-		printf("%s\n",vars[i]);
-	}
-	return (char**)vars;
-}
+char run=0;
 
 char *get_variable(char *name)
 {
-	get_variables();
-	int len=strlen(name);
-	int i;
-	for(i=0;vars[i]!=NULL;i++){
-		int i=memcmp(name,vars[i],len);
-		printf("Comparison: %d\n",i);
+	char *query=getenv("QUERY_STRING");
+	char *ptr=tmp;
+	int qlen=strlen(query);
+	int len=strnlen(name,BUFSIZ);	
+	memcpy(tmp,query,qlen);
+	strtok(tmp,"&");
+	while(memcmp(ptr,name,len)){
+		if((size_t)(ptr-query)>=qlen){
+			break;
+		}
+		ptr+=strlen(ptr)+1;
 	}
-	return NULL;
+	printf("ptr: %s\n",ptr);
+	return ptr+len+1;
 }
