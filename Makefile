@@ -1,6 +1,9 @@
 SOURCES=$(wildcard *.c)
 OBJ=$(SOURCES:.c=.o)
 TARGETS=$(basename $(OBJ))
+libcgi_SOURCES=$(wildcard lib/*.c)
+libcgi_OBJ=$(libcgi_SOURCES:.c=.o)
+CFLAGS+=-Iinclude -g
 DEST=/usr/local/apache2/cgi-bin
 define	GITIGNOREDS
 # DO NOT EDIT
@@ -15,18 +18,24 @@ define	GITIGNOREDS
 endef
 export GITIGNOREDS
 .PHONY:	all .gitignore clean
-all:	.gitignore $(TARGETS)
-$(TARGETS):	$(OBJ)
+all:	.gitignore libcgi.a $(TARGETS)
+$(TARGETS):	%:	%.o
 $(OBJ):	$(SOURCES)
 install:
 	(for target in $(TARGETS); do \
 		install -m 777 $$target $(DEST); \
 	done)
+	httpd -k restart
 .gitignore:
 	echo "$$GITIGNOREDS" > $@
 	(for target in $(TARGETS); do \
 		echo $$target >> $@; \
 	done)
+lib/url.o:	lib/url.c include/url.h
+lib/get.o:	lib/get.c include/get.h
+libcgi.a:	$(libcgi_OBJ)
+	ar rc $@ $^
+readvar:	libcgi.a
 clean:
-	rm -f *.o
+	rm -f *.o *.a *.so
 	rm -f $(TARGETS)

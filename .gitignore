@@ -8,3 +8,4 @@
 *.so
 # Ignore specific targets
 hello
+readvar
