@@ -17,6 +17,7 @@ int url_decode(const char *url,int url_size,char *result,int result_size)
 	int i;
 	int j;	// Result index
 	for(i=0,j=0;(i<url_size) && (j<result_size);i++,j++){
+		ch=url[i];
 		switch(ch){
 		case '+':	// If we met space
 			result[j]=' ';
@@ -32,7 +33,7 @@ int url_decode(const char *url,int url_size,char *result,int result_size)
 			}
 			break;
 		default:
-			result[j++]=ch;
+			result[j]=ch;
 			break;
 		}
 	}
