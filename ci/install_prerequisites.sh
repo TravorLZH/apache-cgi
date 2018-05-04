@@ -26,7 +26,7 @@ echo "Installing pcre-8.42"
 wget https://ftp.pcre.org/pub/pcre/pcre-8.42.tar.gz
 tar zxf pcre-8.42.tar.gz
 pushd pcre-8.42
-./configure --prefix=$PCRE_PREFIX
+./configure --prefix=$PCRE_PREFIX > /dev/null
 make --silent -j20
 sudo make --silent install
 popd
