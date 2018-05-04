@@ -31,7 +31,7 @@ all-mods:	$(MODS)
 $(TARGETS):	%:	%.o
 $(OBJ):	$(SOURCES)
 $(MODS):	%.so:	%.c
-	apxs -i -a -c $<
+	env apxs -i -a -c $<
 install:	install-cgi
 	httpd -k restart
 install-cgi:
