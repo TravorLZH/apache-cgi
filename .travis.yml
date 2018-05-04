@@ -3,4 +3,4 @@ compiler: gcc
 dist: trusty
 before_script:
   - source ci/install_prerequisites.sh
-script: make
+script: sudo make
