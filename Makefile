@@ -31,11 +31,12 @@ install:
 	(for target in $(TARGETS); do \
 		echo $$target >> $@; \
 	done)
-lib/url.o:	lib/url.c include/url.h
-lib/get.o:	lib/get.c include/get.h
+lib/url.o:	lib/url.c include/cgi/url.h
+lib/get.o:	lib/get.c include/cgi/get.h
 libcgi.a:	$(libcgi_OBJ)
 	ar rc $@ $^
 readvar:	libcgi.a
+viewsource:	libcgi.a
 clean:
 	rm -f *.o *.a *.so lib/*.o
 	rm -f $(TARGETS)
