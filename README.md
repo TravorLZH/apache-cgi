@@ -1,4 +1,4 @@
-# Apache CGI Demonstrations
+# Apache Demonstrations
 
 [![Build Status](https://travis-ci.org/TravorLZH/apache-cgi.svg?branch=master)](https://travis-ci.org/TravorLZH/apache-cgi)
 
@@ -10,10 +10,14 @@ This repo is originally for backup my code because I need to change a new comput
 
 * **Query String Analysis**: Get variable's value from query string
 
-## Programs
+## CGI Programs
 
 * **hello**: Displays "Hello world!", that's it
 
 * **readvar**: It reads the value of 'hello' from the query string
 
 * **viewsource**: This program is supposed to work with `mod_rewrite`, so that I can use it to highlight `*.c` source files
+
+## Apache Modules
+
+* **mod\_hello**: A module which displays "Hello world!" when accessing `*.c` files
