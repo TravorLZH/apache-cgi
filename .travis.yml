@@ -1,4 +1,7 @@
 language: c
 compiler: gcc
 dist: trusty
+sudo: required
+before_script:
+  - sudo apt-get install apache2
 script: make
