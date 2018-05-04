@@ -6,6 +6,10 @@
 *.a
 *.exe
 *.so
+*.lo
+*.la
+*.slo
+.libs/
 # Ignore specific targets
 hello
 viewsource
