@@ -6,7 +6,7 @@ APACHE_PREFIX=/usr/local/apache2
 # APR
 wget http://mirror.olnevhost.net/pub/apache//apr/apr-1.6.3.tar.gz
 tar zxf apr-1.6.3.tar.gz
-pushd apr-1.6.3.tar.gz
+pushd apr-1.6.3
 ./configure --prefix=$APR_PREFIX
 make -j20
 sudo make install
