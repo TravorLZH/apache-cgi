@@ -1,7 +1,6 @@
 language: c
 compiler: gcc
 dist: trusty
-sudo: required
 before_script:
   - source ci/install_prerequisites.sh
-script: sudo make
+script: make
