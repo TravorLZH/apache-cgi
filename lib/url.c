@@ -1,5 +1,6 @@
 #include <string.h>
 #include <ctype.h>
+#include <cgi/url.h>
 
 #define	NON_NUM	'0'
 
