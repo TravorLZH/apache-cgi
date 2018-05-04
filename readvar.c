@@ -1,8 +1,8 @@
 #include <stdio.h>
 #include <string.h>
 #include <stdlib.h>
-#include <get.h>
-#include <url.h>
+#include <cgi/get.h>
+#include <cgi/url.h>
 
 char buf[BUFSIZ];
 
